@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "ezconfig"
+version = "0.1.0"
+description = "Автоматизация конфигов"
+readme = "README.md"
+authors = [
+    "Reznikov Ilya <ril.xilus@gmail.com>"
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+loguru = "^0.7"
+pydantic = "^2"
+pydantic-settings = "^2"
+python-dotenv = "^1"
+pyyaml = "^6"
+hvac = "^2"
+cachetools = "^5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+pytest-mock = "^3.14.0"
+ruff = "^0.3.7"
+pre-commit = "^3.7.0"
+pyright = "^1.1.359"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "E501",  # Line too long
+
+  "D",  # pydocstyle
+  "S",  # flake8-bandit
+  "W",  # pycodestyle warnings (покрываются форматированием)
+  "EM", "TRY003",  # Передача строк в конструктор исключений
+  "TD", "FIX",  # flake8-todos, flake8-fixme
+  "TCH",  # flake8-type-checking
+  "ANN101", "ANN102",  # Missing type annotation for `self/cls`
+  "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+  "RUF001", "RUF002", "RUF003",  # ambiguous character warnings (Не работают с кириллицей)
+  "COM812", "ISC001",  # following rules may cause conflicts when used with the formatter
+  "PGH003",  # Use specific rule codes when ignoring type issues
+  "BLE001",  # Do not catch blind exception: `Exception`
+  "ERA",  # Found commented-out code
+  "PLR0913",  # Too many arguments in function definition
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+  "SLF"  # Private member accessed
+]
+
+
+
+[tool.pyright]
+include = ["ezconfig", "tests"]
+exclude = ["**/__pycache__"]
+venvPath = "."
+venv = ".venv"
+
+reportUnnecessaryTypeIgnoreComment = true

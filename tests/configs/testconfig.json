@@ -1,0 +1,4 @@
+{
+    "string": "abc",
+    "vault_string": "@vault_str services/data/000_ezconfig,secret.str"
+}

@@ -1,0 +1,8 @@
+integer: 123
+none: null
+
+nested:
+  name: Harry
+  surname: Potter
+
+vault_nested: "@vault_yaml services/data/000_ezconfig,secret.yaml"

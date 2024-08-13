@@ -1,0 +1,9 @@
+.*
+!.gitignore
+!.env.example
+!.pre-commit-config.yaml
+
+__*
+!__init__.py
+
+dist/
